@@ -1,0 +1,13 @@
+/* theme/fallback.css — Tema de respaldo estático (Catppuccin Mocha) */
+:root {
+  --background:    #1e1e2e;
+  --surface:       #313244;
+  --surface-alt:   #45475a;
+  --foreground:    #cdd6f4;
+  --foreground-dim:#a6adc8;
+  --accent:        #cba6f7;   /* mauve */
+  --accent-alt:    #89b4fa;   /* blue */
+  --warning:       #f38ba8;   /* red */
+  --success:       #a6e3a1;   /* green */
+  --on-accent:     #1e1e2e;
+}
