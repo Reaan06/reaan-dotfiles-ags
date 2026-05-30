@@ -64,12 +64,19 @@ class WeatherService extends Service {
   private async _fetchWeather() {
     try {
       // Usamos curl para obtener el clima de wttr.in en formato JSON (j1)
-      const res = await execAsync("curl -s 'https://wttr.in/?format=j1'");
+      // Agregamos timeout de conexión para mayor robustez
+      const res = await execAsync("curl -sf --connect-timeout 5 'https://wttr.in/?format=j1'");
       const data = JSON.parse(res);
+
+      // Validación de la respuesta de wttr.in
+      if (!data?.current_condition?.[0]) {
+        throw new Error("Respuesta de wttr.in malformada");
+      }
+
       const current = data.current_condition[0];
 
       const weatherData: WeatherData = {
-        temp: parseInt(current.temp_C),
+        temp: Number(current.temp_C) || 0,
         description: current.weatherDesc[0].value,
         icon: this._getIcon(current.weatherCode),
       };
