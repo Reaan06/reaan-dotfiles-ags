@@ -10,8 +10,12 @@ declare module "resource:///com/github/Aylur/ags/service.js" {
 }
 
 declare module "resource:///com/github/Aylur/ags/variable.js" {
+    export interface VariableOptions<T> {
+        poll?: [number, string] | [number, () => T | Promise<T>];
+    }
+
     export class Variable<T> {
-        constructor(value: T);
+        constructor(value: T, options?: VariableOptions<T>);
         setValue(value: T): void;
         getValue(): T;
         bind(): any;
@@ -48,9 +52,19 @@ declare module "resource:///com/github/Aylur/ags/widgets/label.js" {
     export default Label;
 }
 
+declare module "resource:///com/github/Aylur/ags/widgets/window.js" {
+    const Window: any;
+    export default Window;
+}
+
 declare module "resource:///com/github/Aylur/ags/widgets/box.js" {
     const Box: any;
     export default Box;
+}
+
+declare module "resource:///com/github/Aylur/ags/widgets/centerbox.js" {
+    const CenterBox: any;
+    export default CenterBox;
 }
 
 declare module "resource:///com/github/Aylur/ags/widgets/button.js" {

@@ -289,3 +289,9 @@ export class HyprlandService extends Service {
     }
   }
 }
+
+// ---------------------------------------------------------------------------
+// Singleton de HyprlandService exportado
+// ---------------------------------------------------------------------------
+
+export const hyprland = new HyprlandService();
