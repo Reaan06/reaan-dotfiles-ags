@@ -1,0 +1,6 @@
+FILE LOADED
+MAIN CALLED
+Monitors: 2
+Creating bar for [object instance wrapper GType:GdkWaylandMonitor jsobj@0x3f6f295350d8 native@0x55b95882d630]
+Creating bar for [object instance wrapper GType:GdkWaylandMonitor jsobj@0x3f6f29535100 native@0x55b95882d8a0]
+[31merror: [0msignal: killed

@@ -1,9 +1,8 @@
 #!/bin/bash
 
-# Script para iniciar la nueva barra AGS y cerrar otros paneles existentes
-echo "Cerrando otros paneles existentes..."
+# Script para iniciar la nueva barra Astal (AGS v2)
+echo "Cerrando paneles existentes..."
 
-# Lista de procesos de barras comunes
 BARS=("waybar" "polybar" "ags" "eww")
 
 for bar in "${BARS[@]}"; do
@@ -13,8 +12,8 @@ for bar in "${BARS[@]}"; do
   fi
 done
 
-echo "Iniciando nueva barra AGS (Astal)..."
-# Iniciar en segundo plano usando 'ags run' especificando GTK 3
-ags run main.ts --gtk 3 &
+echo "Iniciando barra con Astal (AGS v2)..."
+# Ejecutar usando ags run sobre el nuevo punto de entrada app.ts
+ags run app.ts &
 
 echo "Barra iniciada con éxito."
