@@ -1,34 +1,45 @@
-/* style.css — CSS simplificado para diagnóstico de visibilidad */
-
-.bar-window {
-    background-color: rgba(255, 0, 0, 0.5); /* ROJO para asegurar visibilidad */
+:root {
+  --bg: #111111;
+  --surface: #1F2020;
+  --fg: #E0E0E0;
+  --accent: #FF8E8E;
 }
 
-.bar-container {
-    background-color: #1e1e2e;
-    border: 2px solid #cba6f7;
-    margin: 5px;
-    padding: 5px;
-    min-height: 40px;
+/* style.css — Estilos para la barra Astal */
+
+window.BarWindow {
+    background-color: transparent;
 }
 
-.module {
-    background-color: #313244;
-    border: 1px solid #cba6f7;
-    margin: 2px;
-    padding: 5px;
-}
-
-.workspaces button {
-    background-color: #45475a;
-    color: #cdd6f4;
-}
-
-.workspaces button.active {
-    background-color: #cba6f7;
-    color: #1e1e2e;
+.BarContainer {
+    background-color: rgba(30, 30, 46, 0.95);
+    border-bottom: 2px solid #cba6f7;
+    padding: 6px 15px;
+    font-family: "JetBrainsMono Nerd Font", "Ubuntu", sans-serif;
+    font-size: 14px;
+    min-height: 30px;
 }
 
 label {
     color: #cdd6f4;
+}
+
+.start label, .center label, .end label {
+    background-color: #313244;
+    padding: 4px 12px;
+    border-radius: 6px;
+    margin: 0 4px;
+}
+
+.center label {
+    color: #cba6f7;
+    font-weight: bold;
+}
+
+.pill {
+  background-color: var(--surface);
+  color: var(--fg);
+  border-radius: 12px;
+  padding: 4px 12px;
+  margin: 4px;
 }
