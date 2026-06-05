@@ -1,21 +1,13 @@
 import app from "ags/gtk3/app"
 import Bar from "./widget/Bar"
 
-print("FILE LOADED")
-
 app.start({
-    instanceName: "hyprland-shell-test",
+    instanceName: "ags-bar",
+    css: "./style.css",
     main() {
-        print("MAIN CALLED")
-        try {
-            const monitors = app.get_monitors()
-            print(`Monitors: ${monitors.length}`)
-            for (const monitor of monitors) {
-                print(`Creating bar for ${monitor}`)
-                Bar(monitor)
-            }
-        } catch (e) {
-            print(`ERROR IN MAIN: ${e}`)
+        const monitors = app.get_monitors()
+        for (const monitor of monitors) {
+            Bar(monitor)
         }
     },
 })

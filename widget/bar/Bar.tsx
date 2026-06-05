@@ -1,29 +1,31 @@
-import { Astal, Gtk, Gdk } from "ags/gtk3"
+import { Astal, Gdk } from "ags/gtk3"
 import app from "ags/gtk3/app"
-import Workspaces from "./bar/Workspaces"
-import Media from "./bar/Media"
-import Clock from "./bar/Clock"
+import Workspaces from "./Workspaces"
+import Clock from "./Clock"
+import Weather from "./Weather"
+import SystemStatus from "./SystemStatus"
 
 export default function Bar(monitor: Gdk.Monitor) {
     const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
 
     return <window
         visible
-        name={`bar-${monitor}`}
-        class="BarWindow"
+        name={`bar-old-${monitor}`}
+        class="bar"
         gdkmonitor={monitor}
         exclusivity={Astal.Exclusivity.EXCLUSIVE}
         anchor={TOP | LEFT | RIGHT}
         application={app}>
         <centerbox class="BarContainer">
-            <box halign={Gtk.Align.START}>
+            <box class="start">
                 <Workspaces />
             </box>
-            <box halign={Gtk.Align.CENTER}>
-                <Media />
-            </box>
-            <box halign={Gtk.Align.END}>
+            <box class="center" spacing={12}>
                 <Clock />
+                <Weather />
+            </box>
+            <box class="end">
+                <SystemStatus />
             </box>
         </centerbox>
     </window>

@@ -1,17 +1,39 @@
 {
   "compilerOptions": {
-    "strict": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictPropertyInitialization": false,
     "module": "ESNext",
     "target": "ESNext",
     "lib": ["ESNext"],
-    "moduleResolution": "Node",
+    "moduleResolution": "Bundler",
     "jsx": "react-jsx",
     "jsxImportSource": "ags/gtk3",
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "skipLibCheck": true,
     "paths": {
+      "ags": ["./node_modules/ags/lib/index.ts"],
       "ags/*": ["./node_modules/ags/lib/*"],
-      "gnim/*": ["./node_modules/gnim/lib/*"]
+      "gnim": ["./node_modules/gnim/dist/index.ts"],
+      "gnim/*": ["./node_modules/gnim/dist/*"]
     }
-  }
+  },
+  "include": [
+    "./**/*.ts",
+    "./**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules",
+    "temp_init",
+    "temp_init_ags/widget/Bar.tsx",
+    "temp_init_ags/widget/**/*",
+    "test_app_keys.ts",
+    "test_import.ts",
+    "test_import_var.ts",
+    "test_main.ts",
+    "main.ts",
+    "get_styles.js"
+  ]
 }
