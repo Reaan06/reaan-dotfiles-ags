@@ -1,31 +1,34 @@
-import { createBinding } from "gnim"
-import AstalWp from "gi://AstalWp?version=0.1"
-import AstalBattery from "gi://AstalBattery?version=0.1"
-import AstalNetwork from "gi://AstalNetwork?version=0.1"
+import { bind } from "astal"
+import Wp from "astal/wireplumber"
+import Battery from "astal/battery"
+import Network from "astal/network"
+import { system } from "../../service/system"
 
 export default function SystemStatus() {
-    const wp = AstalWp.get_default()
+    const wp = Wp.get_default()
     const speaker = wp?.audio?.default_speaker
-    const battery = AstalBattery.get_default()
-    const network = AstalNetwork.get_default()
+    const battery = Battery.get_default()
+    const network = Network.get_default()
 
     return <box class="system-status" spacing={8}>
+        <label label={bind(system, "cpu").as(c => `󰘚 ${Math.round(c)}%`)} />
+        <label label={bind(system, "ram").as(r => `󰓅 ${Math.round(r)}%`)} />
         {speaker && (
             <label
                 class="audio"
-                label={createBinding(speaker, "volume").as(v => `Vol: ${Math.round(v * 100)}%`)}
+                label={bind(speaker, "volume").as(v => `Vol: ${Math.round(v * 100)}%`)}
             />
         )}
         {network && network.wifi && (
             <label
                 class="network"
-                label={createBinding(network.wifi, "ssid").as(ssid => ssid ? `󰖩 ${ssid}` : "󰖪 Disconnected")}
+                label={bind(network.wifi, "ssid").as(ssid => ssid ? `󰖩 ${ssid}` : "󰖪 Disconnected")}
             />
         )}
         {battery && (
             <label
                 class="battery"
-                label={createBinding(battery, "percentage").as(p => `󰁹 ${Math.round(p * 100)}%`)}
+                label={bind(battery, "percentage").as(p => `󰁹 ${Math.round(p * 100)}%`)}
             />
         )}
     </box>

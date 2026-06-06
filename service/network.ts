@@ -7,9 +7,8 @@
  * Requirements: 6.5, 6.6, 9.1, 9.2
  */
 
-import Service from "resource:///com/github/Aylur/ags/service.js";
-import { Variable } from "resource:///com/github/Aylur/ags/variable.js";
-import Network from "resource:///com/github/Aylur/ags/service/network.js";
+import { Service, Variable } from "astal";
+import Network from "astal/network";
 import { logger } from "../util/logger.js";
 
 const MODULE = "NetworkService";

@@ -1,0 +1,75 @@
+$bg-bar: rgba(20, 10, 40, 0.92);
+$bg-workspace-active: #7c3aed;
+$text-primary: #f0e6ff;
+$text-muted: rgba(240, 230, 255, 0.55);
+$accent-purple: #9d5fe8;
+$border-subtle: rgba(160, 100, 255, 0.15);
+
+.BarWindow {
+    background-color: transparent;
+}
+
+.BarContainer {
+    background-color: $bg-bar;
+    color: $text-primary;
+    padding: 0 12px;
+    height: 32px;
+    font-family: "JetBrainsMono Nerd Font", sans-serif;
+    
+    // Simulación de estrellas
+    background-image: radial-gradient(circle, white 1px, transparent 1px),
+                      radial-gradient(circle, white 1px, transparent 1px);
+    background-size: 100px 100px, 150px 150px;
+    background-position: 10px 10px, 50px 20px;
+}
+
+button {
+    all: unset;
+    padding: 0 8px;
+    color: $text-primary;
+    transition: background 0.2s;
+    
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+.Workspaces {
+    button {
+        padding: 4px 8px;
+        
+        &.active {
+            background-color: $bg-workspace-active;
+            border-radius: 12px;
+            color: white;
+        }
+    }
+}
+
+.Clock {
+    padding: 0 10px;
+    .time {
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .date {
+        font-size: 9px;
+        color: $text-muted;
+    }
+}
+
+.Weather {
+    padding: 0 10px;
+}
+
+.Volume {
+    button { padding: 0 4px; }
+}
+
+.Battery {
+    .low { color: #ff5555; }
+}
+
+.Network .globe {
+    color: #44aaff;
+}

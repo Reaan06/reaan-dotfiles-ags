@@ -1,5 +1,5 @@
 import app from "ags/gtk3/app"
-import Bar from "./widget/Bar"
+import Bar from "./widget/Bar/index"
 
 app.start({
     instanceName: "ags-bar",

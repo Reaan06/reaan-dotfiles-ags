@@ -8,9 +8,8 @@
  * Requirements: 6.7, 6.8, 9.1, 9.2
  */
 
-import Service from "resource:///com/github/Aylur/ags/service.js";
-import { Variable } from "resource:///com/github/Aylur/ags/variable.js";
-import Battery from "resource:///com/github/Aylur/ags/service/battery.js";
+import { Service, Variable } from "astal";
+import Battery from "astal/battery";
 import { logger } from "../util/logger.js";
 
 const MODULE = "BatteryService";

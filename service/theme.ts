@@ -8,9 +8,7 @@
  * Requirements: 7.1, 7.2, 7.3, 7.4, 7.6, 7.7, 9.6
  */
 
-import Service from "resource:///com/github/Aylur/ags/service.js";
-import { Variable } from "resource:///com/github/Aylur/ags/variable.js";
-import App from "resource:///com/github/Aylur/ags/app.js";
+import { Service, Variable, App } from "astal";
 import GLib from "gi://GLib";
 
 import type { AppConfig, ThemePalette } from "../util/types.js";

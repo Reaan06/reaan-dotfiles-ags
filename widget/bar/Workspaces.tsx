@@ -1,10 +1,10 @@
-import { createBinding, For } from "gnim"
-import AstalHyprland from "gi://AstalHyprland?version=0.1"
+import { bind, For } from "astal"
+import Hyprland from "astal/hyprland"
 
-const hyprland = AstalHyprland.get_default()
+const hyprland = Hyprland.get_default()
 
 export default function Workspaces() {
-    const workspaces = createBinding(hyprland, "workspaces").as(wss =>
+    const workspaces = bind(hyprland, "workspaces").as(wss =>
         wss
             .filter((ws) => ws.id > 0 && ws.id <= 7)
             .sort((a, b) => a.id - b.id)
@@ -14,7 +14,7 @@ export default function Workspaces() {
         <For each={workspaces}>
             {(ws) => (
                 <button
-                    class={createBinding(hyprland, "focusedWorkspace").as((fw) =>
+                    class={bind(hyprland, "focusedWorkspace").as((fw) =>
                         fw && fw.id === ws.id
                             ? "focused"
                             : ws.clients.length > 0

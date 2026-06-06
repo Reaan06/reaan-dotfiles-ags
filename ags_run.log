@@ -1,2 +1,12 @@
-FILE LOADED
-instance "ags-bar-astal" has no request handler implemented
+
+(gjs:749390): Gjs-CRITICAL **: 17:39:47.886: JS ERROR: TypeError: createState(...).poll is not a function
+Clock@file:///run/user/1000/ags.js:1941:32 -> ../../../home/reaan/reaan-dotfiles2/widget/Bar/modules/Clock.tsx:5:34
+jsx@file:///run/user/1000/ags.js:1239:25 -> ../../../usr/share/ags/js/node_modules/gnim/dist/jsx/jsx.ts:258:24
+Bar@file:///run/user/1000/ags.js:2082:27 -> ../../../home/reaan/reaan-dotfiles2/widget/Bar/index.tsx:27:17
+main@file:///run/user/1000/ags.js:2105:10 -> ../../../home/reaan/reaan-dotfiles2/app.ts:10:13
+vfunc_command_line/<@file:///run/user/1000/ags.js:1487:66 -> ../../../usr/share/ags/js/lib/gtk3/app.ts:285:17
+createRoot/<@file:///run/user/1000/ags.js:893:28 -> ../../../usr/share/ags/js/node_modules/gnim/dist/jsx/scope.ts:184:28
+run@file:///run/user/1000/ags.js:870:14 -> ../../../usr/share/ags/js/node_modules/gnim/dist/jsx/scope.ts:32:20
+createRoot@file:///run/user/1000/ags.js:893:16 -> ../../../usr/share/ags/js/node_modules/gnim/dist/jsx/scope.ts:184:18
+vfunc_command_line@file:///run/user/1000/ags.js:1484:17 -> ../../../usr/share/ags/js/lib/gtk3/app.ts:283:13
+_init/GLib.MainLoop.prototype.runAsync/</<@resource:///org/gnome/gjs/modules/core/overrides/GLib.js:264:34

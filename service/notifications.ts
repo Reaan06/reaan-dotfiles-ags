@@ -7,8 +7,7 @@
  * Requirements: 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 9.1, 9.2
  */
 
-import Service from "resource:///com/github/Aylur/ags/service.js";
-import { Variable } from "resource:///com/github/Aylur/ags/variable.js";
+import { Service, Variable } from "astal";
 import type { AppConfig } from "../config/config.js";
 import type { Notification, DismissReason } from "../util/types.js";
 import { logger } from "../util/logger.js";

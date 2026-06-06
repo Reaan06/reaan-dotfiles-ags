@@ -12,8 +12,7 @@
  * Requirements: 1.1, 9.1
  */
 
-import Service from "resource:///com/github/Aylur/ags/service.js";
-import { Variable } from "resource:///com/github/Aylur/ags/variable.js";
+import { Service, Variable } from "astal";
 import { execAsync } from "../util/exec.js";
 import { logger } from "../util/logger.js";
 import type { WeatherData } from "../util/types.js";

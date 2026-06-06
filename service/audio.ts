@@ -13,9 +13,8 @@
  * Requirements: 6.2, 6.3, 6.4, 9.1, 9.2
  */
 
-import Service from "resource:///com/github/Aylur/ags/service.js";
-import { Variable } from "resource:///com/github/Aylur/ags/variable.js";
-import Audio from "resource:///com/github/Aylur/ags/service/audio.js";
+import { Service, Variable } from "astal";
+import Audio from "astal/audio";
 import type { AppConfig } from "../util/types.js";
 import { logger } from "../util/logger.js";
 

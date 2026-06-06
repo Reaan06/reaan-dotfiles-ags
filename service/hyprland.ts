@@ -6,7 +6,7 @@
  * via gi://AstalHyprland (no el viejo Service de AGS v1).
  */
 
-import AstalHyprland from "gi://AstalHyprland?version=0.1"
+import AstalHyprland from "astal/hyprland"
 import type { Workspace, ActiveWindow } from "../util/types.js"
 
 // Re-export types for consumers that import from this module

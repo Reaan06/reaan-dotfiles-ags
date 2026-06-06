@@ -1,5 +1,5 @@
-import { createBinding } from "gnim"
-import AstalHyprland from "gi://AstalHyprland?version=0.1"
+import { bind } from "astal"
+import AstalHyprland from "astal/hyprland"
 
 export default function ActiveWindow() {
     const hyprland = AstalHyprland.get_default()
@@ -7,6 +7,6 @@ export default function ActiveWindow() {
         class="active-window"
         maxWidthChars={50}
         truncate={true}
-        label={createBinding(hyprland, "focusedClient").as(client => client?.title || "Desktop")}
+        label={bind(hyprland, "focusedClient").as(client => client?.title || "Desktop")}
     />
 }
