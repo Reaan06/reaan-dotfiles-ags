@@ -1,0 +1,8 @@
+{
+  "name": "ags",
+  "version": "0.0.0-mock",
+  "main": "index.js",
+  "type": "commonjs",
+  "description": "Local vendor mock of ags runtime for tests and CI",
+  "license": "MIT"
+}
