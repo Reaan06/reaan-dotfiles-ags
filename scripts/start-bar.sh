@@ -27,6 +27,8 @@ fi
 # Runtime check: ensure ags binary exists and warn about gnim runtime mismatch
 if command -v ags >/dev/null 2>&1; then
   echo "ags found: $(ags --version 2>/dev/null || echo 'unknown')"
+  # Try to ensure runtime poll shim is applied when possible
+  node -e "try{require('./src/compat/gnim-poll-shim').ensurePollPatch()}catch(e){}"
 else
   echo "Warning: 'ags' not found in PATH — please install AGS runtime (see scripts/install_arch.sh on Arch)"
 fi

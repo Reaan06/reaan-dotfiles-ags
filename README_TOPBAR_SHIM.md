@@ -10,3 +10,5 @@ How to test in a headful environment
 
 Notes
 - Unit tests run in headless CI and cannot import gi:// GLib or the ags runtime. Integration checks that require a display must be run locally in a headful environment.
+
+Note: The start script will attempt to call the shim at runtime when 'ags' is present. Unit tests included in this change are headless-only and stub GLib where necessary.
