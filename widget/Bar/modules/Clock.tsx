@@ -1,5 +1,6 @@
 import { createState } from "gnim"
-import { createStateWithPoll } from "../../src/compat/gnim-poll-shim"
+// Use module-relative path that resolves at runtime for tests
+import { createStateWithPoll } from "../../../src/compat/gnim-poll-shim"
 import GLib from "gi://GLib"
 
 export default function Clock() {
