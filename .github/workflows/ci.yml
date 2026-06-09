@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, fix/topbar-gnim-poll-shim ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+
+  integration:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: [hyprland]
+    needs: unit
+    steps:
+      - uses: actions/checkout@v4
+      - name: Note about runner
+        run: |
+          echo "This job is intended to run on a self-hosted runner labeled 'hyprland'."
+          echo "The runner must have AGS and system typelibs available (e.g., AstalHyprland) and a Wayland compositor."
+      - name: Install deps
+        run: npm ci
+      - name: Run integration tests (do not start GUI in CI)
+        run: npm test
