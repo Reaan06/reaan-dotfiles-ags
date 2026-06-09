@@ -1,3 +1,4 @@
+
 #!/usr/bin/env bash
 set -euo pipefail
 
@@ -8,9 +9,9 @@ set -euo pipefail
 echo "Checking Arch Linux prerequisites for Astal (AGS) bar..."
 
 if ! command -v pacman >/dev/null 2>&1; then
-  echo "Error: pacman not found. This script targets Arch Linux."
-  echo "If you're on Arch/Manjaro, ensure pacman is available and try again."
-  echo "Example: sudo pacman -Syu"
+  echo "Error: pacman not found. This script targets Arch Linux." >&2
+  echo "If you're on Arch/Manjaro, ensure pacman is available and try again." >&2
+  echo "Example: sudo pacman -Syu" >&2
   exit 2
 fi
 
