@@ -1,0 +1,30 @@
+name: CI - Tests
+
+on:
+  push:
+    branches: [ main, fix/topbar-arch-support ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  shell-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Shell syntax checks
+        run: |
+          bash -n scripts/start-bar.sh
+          bash -n scripts/install_arch.sh
+
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install deps
+        run: npm ci
+      - name: Run vitest
+        run: npx vitest --run

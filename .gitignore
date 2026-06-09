@@ -1,32 +1,3 @@
-# Node.js
-node_modules/
-npm-debug.log
-package-lock.json
-
-# Build artifacts
-dist/
-build/
-out/
-docs/
-superpowers/
-plans/
-specs/
-conductor/
-
-
-# Environment
-.env
-.env.local
-
-# OS
-.DS_Store
-Thumbs.db
-
-# IDE
-.vscode/
-.idea/
-.kiro
-
-# Git
-.git/
-.worktrees/
+.github/
+**/node_modules/
+/.env

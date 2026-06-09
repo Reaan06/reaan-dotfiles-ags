@@ -1,6 +1,14 @@
-import { createState } from "gnim"
-import { createStateWithPoll } from "../../src/compat/gnim-poll-shim"
-import GLib from "gi://GLib"
+// Use shim helper for safer polling in test/CI environments
+import { createStateWithPoll } from "../../../src/compat/gnim-poll-shim"
+// GLib is optional at import time; tests will stub a global GLib
+let GLib: any = (globalThis as any).GLib
+try {
+  // In runtime GJS this will succeed; in Node tests it will be absent
+  // @ts-ignore
+  GLib = GLib || require('gi://GLib')
+} catch (e) {
+  // leave GLib as is (tests stub global)
+}
 
 export default function Clock() {
     const time = createStateWithPoll("").poll(1000, () =>

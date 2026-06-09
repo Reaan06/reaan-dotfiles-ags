@@ -1,8 +1,11 @@
 import { createBinding } from "gnim"
-import Hyprland from "gi://AstalHyprland?version=0.1"
+import { safeRequire } from "../../../src/compat/gi-typelib-guard"
+
+const _hypr = safeRequire('AstalHyprland', '0.1')
+const Hyprland = _hypr.present ? _hypr.module : _hypr.stub
 
 export default function Workspaces() {
-    const hypr = Hyprland.get_default()
+    const hypr = (Hyprland && typeof Hyprland.get_default === 'function') ? Hyprland.get_default() : (typeof Hyprland.get_default === 'function' ? Hyprland.get_default() : Hyprland)
     const ws_ids = [1, 2, 3, 4, 5, 6, 7, 8]
 
     return <box class="Workspaces" spacing={8}>
