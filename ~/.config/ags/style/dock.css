@@ -1,0 +1,24 @@
+.dock-window {
+  background: alpha(@theme_bg_color, 0.6);
+  border-radius: 18px;
+  border: 1px solid alpha(white, 0.2);
+  padding: 6px 12px;
+  margin-bottom: 8px;
+}
+.dock-content {
+    background: alpha(@theme_bg_color, 0.6);
+    border-radius: 18px;
+    border: 1px solid alpha(white, 0.2);
+    padding: 6px 12px;
+}
+.dock-item { border-radius: 12px; padding: 4px; transition: all 200ms ease; }
+.dock-item:hover { background: alpha(white, 0.15); }
+.dock-item:hover image { -gtk-icon-transform: scale(1.25); }
+.dot {
+  min-width: 4px; min-height: 4px;
+  border-radius: 50%;
+  background: white;
+  margin: 2px auto 0;
+}
+.dock-separator { background: alpha(white, 0.2); min-width: 1px; margin: 6px 4px; }
+.pin-btn { font-size: 14px; padding: 4px 8px; border-radius: 8px; }
