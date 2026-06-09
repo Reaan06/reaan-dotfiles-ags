@@ -20,18 +20,38 @@ export function safeRequire(namespace: string, version?: string): SafeResult {
   const mod = _requireGi(spec)
   if (mod) return { present: true, module: mod }
 
-  // Provide a minimal safe stub for common hyprland methods used by widgets
-  const stub: any = new Proxy({}, {
-    get(_, prop: string) {
-      // Return harmless no-op functions or objects that won't crash on access
-      if (prop === 'get_default') return () => ({
-        // provide dispatch and focusedWorkspace binding accessors used by Workspaces
-        dispatch: (_: string, __: string) => {},
-        focusedWorkspace: null,
-      })
-      return () => undefined
+  // Provide a minimal safe stub. If a mock package exists (vitest alias), prefer that.
+  // Try several known mock paths derived from namespace to increase chance of matching.
+  let stub: any = null
+  try {
+    const candidatePath = `../../packages/mock-gnim/${namespace}`
+    // @ts-ignore
+    const mock = require(candidatePath)
+    if (mock) stub = mock
+  } catch (e) {
+    // try without prefix (some packages export directly under packages/mock-gnim)
+    try {
+      // @ts-ignore
+      const mock2 = require(`../../packages/mock-gnim/${namespace.replace(/^Astal/, '')}`)
+      if (mock2) stub = mock2
+    } catch (e2) {
+      // fallthrough
     }
-  })
+  }
+
+  if (!stub) {
+    stub = new Proxy({}, {
+      get(_, prop: string) {
+        // Return harmless no-op functions or objects that won't crash on access
+        if (prop === 'get_default') return () => ({
+          // provide dispatch and focusedWorkspace binding accessors used by Workspaces
+          dispatch: (_: string, __: string) => {},
+          focusedWorkspace: null,
+        })
+        return () => undefined
+      }
+    })
+  }
 
   return { present: false, stub }
 }

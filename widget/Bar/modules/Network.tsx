@@ -1,5 +1,9 @@
 import { createBinding } from "gnim"
-import Network from "gi://AstalNetwork?version=0.1"
+import { safeRequire } from "../../../src/compat/gi-typelib-guard"
+
+// Use safeRequire to tolerate missing AstalNetwork typelib at runtime
+const _net = safeRequire('AstalNetwork', '0.1')
+const Network = _net.present ? _net.module : _net.stub
 
 export default function NetworkModule() {
     const network = Network.get_default()
