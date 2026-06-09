@@ -10,16 +10,15 @@
     "test": "vitest"
   },
   "dependencies": {
+    
+  },
+  "optionalDependencies": {
     "ags": "*",
     "gnim": "*"
   },
   "workspaces": [
     "packages/*"
   ],
-  "overrides": {
-    "ags": "file:packages/mock-ags",
-    "gnim": "file:packages/mock-gnim"
-  },
   "volta": {
     "node": "20.0.0"
   },
