@@ -15,6 +15,7 @@
   "optionalDependencies": {
     "ags": "*",
     "gnim": "*"
+  },
   "workspaces": [
     "packages/*"
   ],
