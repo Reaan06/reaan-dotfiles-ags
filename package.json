@@ -20,6 +20,9 @@
     "ags": "file:packages/mock-ags",
     "gnim": "file:packages/mock-gnim"
   },
+  "volta": {
+    "node": "20.0.0"
+  },
   "devDependencies": {
     "typescript": "^5.0.0",
     "vitest": "^1.0.0"
