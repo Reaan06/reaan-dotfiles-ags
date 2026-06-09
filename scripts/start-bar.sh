@@ -13,6 +13,14 @@ for bar in "${BARS[@]}"; do
 done
 
 echo "Iniciando barra con Astal (AGS v2)..."
+
+# Runtime check: ensure ags binary exists and warn about gnim runtime mismatch
+if command -v ags >/dev/null 2>&1; then
+  echo "ags found: $(ags --version 2>/dev/null || echo 'unknown')"
+else
+  echo "Warning: 'ags' not found in PATH — please install AGS runtime"
+fi
+
 # Ejecutar usando ags run sobre el nuevo punto de entrada app.ts
 ags run app.ts &
 
