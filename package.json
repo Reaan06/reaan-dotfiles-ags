@@ -10,9 +10,11 @@
     "test": "vitest"
   },
   "dependencies": {
+    
+  },
+  "optionalDependencies": {
     "ags": "*",
     "gnim": "*"
-  },
   "workspaces": [
     "packages/*"
   ],
