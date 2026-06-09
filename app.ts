@@ -1,3 +1,5 @@
+// Import shim early to ensure compatibility with runtimes that lack createState().poll
+import './src/compat/gnim-poll-shim'
 import app from "ags/gtk3/app"
 import Bar from "./widget/Bar/index"
 
