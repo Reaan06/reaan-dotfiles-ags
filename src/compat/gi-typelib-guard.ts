@@ -30,7 +30,12 @@ export function safeRequire(namespace: string, version?: string): SafeResult {
     // @ts-ignore
     if (typeof globalThis !== 'undefined' && (globalThis as any).imports) {
       // Create a harmless stub object that mirrors what safeRequire would return
-      const syntStub = new Proxy({}, { get: () => () => undefined })
+      const syntStub = new Proxy({}, { get: () => {
+        // return a harmless accessor that won't break when properties are read
+        return () => undefined
+      }})
+      // Also provide a get_default accessor returning an object with expected fields
+      syntStub.get_default = () => ({ dispatch: () => {}, focusedWorkspace: null })
       return { present: false, stub: syntStub }
     }
   } catch (e) {}
