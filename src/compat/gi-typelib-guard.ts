@@ -20,6 +20,21 @@ export function safeRequire(namespace: string, version?: string): SafeResult {
   const mod = _requireGi(spec)
   if (mod) return { present: true, module: mod }
 
+  // If running under the AGS runtime (gjs) it will attempt to resolve gi:// imports
+  // at runtime which will throw if typelibs are missing. To guard against that when
+  // require(spec) fails with a missing typelib, provide a safe JS-level stub by
+  // defining a synthetic module mapping using the global `imports` available in gjs
+  // environments. We don't want to mutate global state during tests, so do this
+  // only when gjs is present.
+  try {
+    // @ts-ignore
+    if (typeof globalThis !== 'undefined' && (globalThis as any).imports) {
+      // Create a harmless stub object that mirrors what safeRequire would return
+      const syntStub = new Proxy({}, { get: () => () => undefined })
+      return { present: false, stub: syntStub }
+    }
+  } catch (e) {}
+
   // Provide a minimal safe stub. If a mock package exists (vitest alias), prefer that.
   // Try several known mock paths derived from namespace to increase chance of matching.
   let stub: any = null
