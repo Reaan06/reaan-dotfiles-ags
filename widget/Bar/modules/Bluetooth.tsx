@@ -1,8 +1,11 @@
 import { createBinding } from "gnim"
-import Bluetooth from "gi://AstalBluetooth?version=0.1"
+import { safeRequire } from "../../../src/compat/gi-typelib-guard"
+
+const _bt = safeRequire('AstalBluetooth','0.1')
+const Bluetooth = _bt.present ? _bt.module : _bt.stub
 
 export default function BluetoothModule() {
-    const bluetooth = Bluetooth.get_default()
+    const bluetooth = (Bluetooth && typeof Bluetooth.get_default === 'function') ? Bluetooth.get_default() : Bluetooth
     if (!bluetooth) return <box class="Bluetooth" />
 
     return <box class="Bluetooth" spacing={8}>

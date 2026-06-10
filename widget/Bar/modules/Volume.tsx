@@ -1,8 +1,11 @@
 import { createBinding } from "gnim"
-import Wp from "gi://AstalWp?version=0.1"
+import { safeRequire } from "../../../src/compat/gi-typelib-guard"
+
+const _wp = safeRequire('AstalWp','0.1')
+const Wp = _wp.present ? _wp.module : _wp.stub
 
 export default function Volume() {
-    const speaker = Wp.get_default()?.audio.defaultSpeaker
+    const speaker = Wp.get_default ? Wp.get_default()?.audio.defaultSpeaker : (Wp?.audio?.defaultSpeaker)
     if (!speaker) return <box class="Volume" />
 
     return <box class="Volume" spacing={8}>

@@ -1,8 +1,11 @@
 import { execAsync } from "ags/process"; import { createBinding } from "gnim"
-import Hyprland from "gi://AstalHyprland?version=0.1"
+import { safeRequire } from "../../../src/compat/gi-typelib-guard"
+
+const _hy = safeRequire('AstalHyprland','0.1')
+const Hyprland = _hy.present ? _hy.module : _hy.stub
 
 export default function KeyboardLayout() {
-    const hypr = Hyprland.get_default()
+    const hypr = (Hyprland && typeof Hyprland.get_default === 'function') ? Hyprland.get_default() : Hyprland
 
     return <button 
         class="KeyboardLayout"
